@@ -45,6 +45,15 @@
 // c)Eyni id-li student Groupda varsa elave etmek mumkun olmasin 
 
 
+class Student{
+    constructor(Id,name,surname,age){
+        this.Id=Id;
+        this.name=name;
+        this.surname=surname;
+        this.age=age;
+    }
+   
+}
 class Group{
     constructor(id,GroupName,studentCount){
         this.id=id;
@@ -53,17 +62,24 @@ class Group{
         this.arr=[];
     }
     addStudent(user){
-        let fullUser={...user};
+        let fullUser=Object.assign(this,user)
         if((this.arr.length<this.studentCount)){
-        this.arr.push(fullUser)
+            if(this.arr.find(x=>x.Id===Id)){
+            this.arr.push(fullUser)
+            }
+            else{
+                console.log("Enter correct id");
+            }
+        }
+        else{
+            console.log("Enough student count");
         }
     }
 } 
-let user2=new Student(1,"Resul","Rustemli",25)
-let user1=new Student(1,"Resul","Rustemli",25)
+let user2=new Student(1,"gnl","hmbtv",25)
+let user1=new Student(1,"lorem","ipsum",25)
 
 let grup=new Group(1,"P",2)
 grup.addStudent(user2);
 grup.addStudent(user1);
 console.log(grup.arr)
-console.log(this.arr.find(x=>{x.Id==Id}));
